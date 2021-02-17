@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="EMS_2.Scheduling.CalendarDay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:scheduling="clr-namespace:EMS_2.Scheduling"
+             xmlns:calendar="clr-namespace:EMS_2.Scheduling.Calendar"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+	<Grid Name="day" UIElement.PreviewMouseDown="Day_PreviewMouseDown" >
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<!-- Day of Week (ex. 23) -->
+			<RowDefinition Height="*"/>
+
+			<!-- Calendar Tile Rows -->
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- Tile Background -->
+		<Rectangle Fill="LightGray" />
+		
+		<!-- Makes the tile appear darker (start / end of focus month overflow) -->
+		<Rectangle Name="filter" Fill="Black" Opacity="0" Panel.ZIndex="1" Grid.RowSpan="7" />
+
+		<!-- Tint based on how many appointments can be booked (Green, yellow, red) -->
+		<Rectangle Name="appointmentColourFilter" Fill="Green" Opacity="0.15" Panel.ZIndex="1" Grid.RowSpan="7" />
+
+		<!-- Border effect -->
+		<Border Name="selectionOutine" BorderBrush="Black" Opacity="0.8" Panel.ZIndex="10" Grid.RowSpan="7" />
+
+		<!-- Highlight effect -->
+		<Rectangle Name="selectionFilter" Opacity="0.0" Panel.ZIndex="10" Grid.RowSpan="7" />
+		
+		<!-- Currently Selected Highlight -->
+		<Border Name="currentlySelectedOutline" Opacity="0.9" Panel.ZIndex="9" Grid.RowSpan="7" />
+
+		<!-- Day of month -->
+		<Viewbox Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+			<Label Content="X" 
+				   Name="number"
+				   Foreground="Black"
+				   Margin="20, 0, 0, 0"
+				   FontSize="90"
+				   VerticalAlignment="Center"/>
+		</Viewbox>
+	</Grid>
+</UserControl>

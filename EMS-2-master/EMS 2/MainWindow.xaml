@@ -1,0 +1,98 @@
+﻿<Window x:Class="EMS_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ems="clr-namespace:EMS_2"
+        xmlns:scheduling="clr-namespace:EMS_2.Scheduling"
+        xmlns:patient="clr-namespace:EMS_2.Patients"
+        xmlns:billing="clr-namespace:EMS_2.Billing"
+        mc:Ignorable="d"
+        Title="EMS" 
+		WindowState="Maximized"
+		Icon="./Images/Icons/abacus.png">
+
+	<TabControl Name="tabParent" BorderThickness="1" BorderBrush="CornflowerBlue" SelectionChanged="TabParent_SelectionChanged">
+		<!-- Centers the tabs -->
+		<TabControl.Resources>
+			<Style TargetType="{x:Type TabPanel}">
+				<Setter Property="HorizontalAlignment" Value="Center" />
+			</Style>
+		</TabControl.Resources>
+
+		<!-- Scheduling Tab -->
+		<TabItem Width="170" Name="tabItemScheduling">
+			<TabItem.Header>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="./Images/Icons/calendar.png" Width="25" Height="25" VerticalAlignment="Center" />
+					<TextBlock Text="Scheduling" Foreground="Black" VerticalAlignment="Center" Margin="5 0 0 0"  />
+				</StackPanel>
+			</TabItem.Header>
+			<scheduling:TabScheduling />
+		</TabItem>
+
+		<!-- Patient Tab -->
+		<TabItem Width="170">
+			<TabItem.Header>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="./Images/Icons/person.png" Width="25" Height="25" VerticalAlignment="Center" />
+					<TextBlock Text="Patients" Foreground="Black" VerticalAlignment="Center" Margin="5 0 0 0"  />
+				</StackPanel>
+			</TabItem.Header>
+			<patient:TabPatient />
+		</TabItem>
+
+		<!-- Billing Tab -->
+		<TabItem Width="170">
+			<TabItem.Header>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="./Images/Icons/billing.png" Width="24" Height="24" VerticalAlignment="Center" />
+					<TextBlock Text="Billing" Foreground="Black" VerticalAlignment="Center" Margin="5 0 0 0"  />
+				</StackPanel>
+			</TabItem.Header>
+			<billing:TabBilling />
+		</TabItem>
+
+		<!-- Administration Tab -->
+		<TabItem Width="170">
+			<TabItem.Header>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="./Images/Icons/admin.png" Width="25" Height="25" VerticalAlignment="Center" />
+					<TextBlock Text="Administration" Foreground="Black" VerticalAlignment="Center" Margin="5 0 0 0"  />
+				</StackPanel>
+			</TabItem.Header>
+            <StackPanel>
+                <StackPanel.Background>
+                    <ImageBrush ImageSource=".\Images\admin.png" Stretch="None"/>
+                </StackPanel.Background>
+                <Button  Height="23" HorizontalAlignment="Left"  Name="btnDataBase" Margin="44,63,0,0" VerticalAlignment="Top" Width="75" Click="BtnMenuExpand_Click" >
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Database"/>
+                            <Path x:Name="BtnLookupArrow" Margin="4" VerticalAlignment="Center" Width="6" Fill="#FF527DB5" Stretch="Uniform" HorizontalAlignment="Right" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "/>
+                        </StackPanel>
+                    </Button.Content>
+                    <Button.ContextMenu>
+                        <ContextMenu >
+                            <MenuItem Header="Export" Click="ExportDB_Click"/>
+                            <MenuItem Header="Import" Click="ImportDB_Click"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+                <!--"C:\Program Files (x86)\Microsoft SQL Server\140\DAC\bin\SqlPackage.exe" /a:Export /tf:testExport.bacpac /scs:"Data Source=abacus-ems2.database.windows.net;Initial Catalog=EMS2;" /ua:True-->
+            </StackPanel>
+		</TabItem>
+	</TabControl>
+
+
+	<!-- Styling -->
+	<Window.Resources>
+		<Style TargetType="Label">
+			<!-- <Setter Property="FontFamily" Value="Yu Gothic Medium"/> -->
+		</Style>
+
+		<SolidColorBrush x:Key="test" Color="#5381ac" />
+		
+	</Window.Resources>
+
+</Window>

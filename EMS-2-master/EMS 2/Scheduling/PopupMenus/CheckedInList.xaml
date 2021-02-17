@@ -1,0 +1,45 @@
+﻿<Window x:Class="EMS_2.Scheduling.PopupMenus.CheckedInList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EMS_2.Scheduling.PopupMenus"
+        mc:Ignorable="d"
+        Title="Patient Check-In" Height="380" Width="300"
+		ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+		Icon="../../Images/Icons/abacus.png">
+	<StackPanel VerticalAlignment="Center" Margin="15">
+		<!-- Title -->
+		<Label Content="Patient Check-In" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+
+		<!-- List of Appointments -->
+		<ListBox Height="184" Margin="0, 10, 0, 0" Name="lstAppointments" SelectionChanged="LstAppointments_SelectionChanged" />
+
+		<!-- Legend -->
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
+			<Border BorderBrush="LightGray" BorderThickness="1" Margin="0, 0, 5, 0">
+				<Label Content="Unconfirmed"/>
+			</Border>
+			<Label Content="Checked-In" Background="LightPink" Margin="0, 0, 5, 0"/>
+			<Label Content="Cleared" Background="LightGreen"/>
+		</StackPanel>
+		
+		<!-- Buttons -->
+		<Grid Height="30" Margin="0, 10, 0, 0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="5" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="5" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Button Grid.Column="0" Name="btnReset" IsEnabled="False" Click="BtnReset_Click">
+				<Viewbox>
+					<Label Content="◄" FontSize="40"/>
+				</Viewbox>
+			</Button>
+			<Button Grid.Column="2" Name="btnCheckIn" Content="Check-In" IsEnabled="False" Click="BtnCheckIn_Click"/>
+			<Button Grid.Column="4" Name="btnClear" Content="Clear" IsEnabled="False" Click="BtnClear_Click"/>
+		</Grid>
+	</StackPanel>
+</Window>

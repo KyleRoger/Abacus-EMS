@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EMS-MobileApplication</string>
+    <string name="btfLogin">Login</string>
+    <string name="HCN">TempHCN</string>
+</resources>

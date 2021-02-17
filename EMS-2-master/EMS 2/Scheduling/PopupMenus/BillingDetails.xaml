@@ -1,0 +1,69 @@
+﻿<Window x:Class="EMS_2.Scheduling.PopupMenus.BillingDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EMS_2.Scheduling.PopupMenus"
+        mc:Ignorable="d"
+        Title="Billing Details" Height="500" Width="300"
+		ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+		Icon="../../Images/Icons/abacus.png">
+	<StackPanel VerticalAlignment="Center" Margin="15, 0, 15, 0" Name="stkDetails">
+		<!-- Title -->
+		<Label Content="Billing Details" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+
+		<!-- Add -->
+		<Grid Height="30" Margin="0, 15, 0, 0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*" />
+				<ColumnDefinition Width="2*" />
+				<ColumnDefinition Width="1*" />
+			</Grid.ColumnDefinitions>
+			<Label Content="Add" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" FontSize="13" Margin="0, 0, 10, 0" />
+			<TextBox Grid.Column="1" Name="txtAdd" Height="30" Margin="0, 0, 10, 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+			<Button Grid.Column="2" Name="btnAdd" Content="Submit" Click="BtnAdd_Click" />
+		</Grid>
+		
+		<!-- Update -->
+		<Grid Height="30" Margin="0, 10, 0, 0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*" />
+				<ColumnDefinition Width="2*" />
+				<ColumnDefinition Width="1*" />
+			</Grid.ColumnDefinitions>
+			<Label Content="Update" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" FontSize="13" Margin="0, 0, 10, 0" />
+			<TextBox Grid.Column="1" Name="txtUpdate" Height="30" Margin="0, 0, 10, 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+			<Button Grid.Column="2" Name="btnUpdate" Content="Submit" IsEnabled="False" Click="BtnUpdate_Click" />
+		</Grid>
+
+		<!-- Delete Button -->
+		<Grid Height="30" Margin="0, 10, 0, 0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Button Grid.Column="2" Name="btnDelete" Content="Delete" IsEnabled="False" Click="BtnDelete_Click" />
+		</Grid>
+		
+		<!-- List of Bill Codes -->
+		<ScrollViewer Height="200" Margin="0, 15, 0, 15">
+			<ListBox Name="lstBillCodes" SelectionChanged="LstBillCodes_Selection_Changed" />
+		</ScrollViewer>
+
+		<!-- Patient / HOH Choice -->
+		<Grid Height="50">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="2*" />
+			</Grid.ColumnDefinitions>
+
+			<Label Grid.Row="0" Grid.ColumnSpan="2" Content="Bill Code Recipiant" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" />
+
+			<RadioButton HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Content="Patient" IsChecked="True" Name="radPatient" Checked="RadPatient_Checked" />
+			<RadioButton HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Content="Head of Household" Name="radHOH" Checked="RadHOH_Checked" IsEnabled="False" />
+		</Grid>
+	</StackPanel>
+</Window>
